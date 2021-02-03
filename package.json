@@ -5,6 +5,9 @@
   "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
+  "files": [
+    "dist"
+  ],
   "repository": "git@github.com:alexlafroscia/vite-plugin-handlebars.git",
   "author": "Alex LaFroscia <alex@lafroscia.com>",
   "license": "MIT",
