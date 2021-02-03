@@ -1,0 +1,11 @@
+{
+  "extends": ["@movable/eslint-config", "@movable/eslint-config-typescript"],
+  "overrides": [
+    {
+      "files": ["jest.config.js", "prettier.config.js"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
+}
