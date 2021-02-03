@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.0.3...v1.0.4) (2021-02-03)
+
+### Bug Fixes
+
+- move `enforce` to hook definition ([f80ff40](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/f80ff4081e49ea530f6ab49d96394bccabc27991)), closes [/github.com/vitejs/vite/blob/41167277d7c14cbc53877480d0a322bcb1bedd1f/packages/vite/src/node/plugins/html.ts#L403](https://github.com/alexlafroscia//github.com/vitejs/vite/blob/41167277d7c14cbc53877480d0a322bcb1bedd1f/packages/vite/src/node/plugins/html.ts/issues/L403)
+
 ### [1.0.3](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.0.1...v1.0.3) (2021-02-03)
 
 ### [1.0.2](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.0.1...v1.0.2) (2021-02-03)
