@@ -10,7 +10,7 @@ While a JS framework like React or Vue could be used to solve this problem, this
 
 Handlebars provides what we need to be able to stitch together multiple HTML files, interpolate variables, etc.
 
-## Installation and Configuration
+## Installation
 
 Start by installing the package like you would any other
 
@@ -29,7 +29,14 @@ export default {
 };
 ```
 
-Note: this plugin is designed to work with Vite v2.
+Configuring the plugin is covered later in this guide.
+
+### Requirements
+
+- This plugin is intended to work with Vite 2
+- This plugin requires Node 14 or higher (due to usage of `fs/promises`)
+
+## Configuration
 
 ### Defining Context
 
@@ -98,6 +105,37 @@ Your output website content would become:
 ```
 
 Make sure to review the [quirks section](#quirks) for information on potentially-unexpected behavior.
+
+### Other Handlebars Options
+
+All other Handlebars configuration options can also be passed through.
+
+- [`compileOptions`](https://handlebarsjs.com/api-reference/compilation.html#pre-compilation) can be used to alter the compilation step
+- [`runtimeOptions`](https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access) can be used to alter the rendering step
+
+Each of these can also be passed through to the `handlebars` plugin:
+
+```javascript
+// vite.config.js
+import handlebars from 'vite-plugin-handlebars';
+
+export default {
+  plugins: [
+    handlebars({
+      compileOptions: {
+        // Example config option: avoid auto-indenting partials
+        preventIndent: true,
+      },
+      runtimeOptions: {
+        // Example config option: define custom private @variables
+        data: {
+          foo: 'bar',
+        },
+      },
+    }),
+  ],
+};
+```
 
 ## Quirks
 
