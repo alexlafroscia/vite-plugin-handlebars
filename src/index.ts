@@ -21,17 +21,21 @@ export default function handlebars({
   return {
     name: 'handlebars',
 
-    // Ensure Handlebars runs _before_ any bundling
-    enforce: 'pre',
+    transformIndexHtml: {
+      // Ensure Handlebars runs _before_ any bundling
+      enforce: 'pre',
 
-    async transformIndexHtml(html: string): Promise<string> {
-      if (partialDirectory) {
-        await registerPartials(partialDirectory);
-      }
+      async transform(html: string): Promise<string> {
+        if (partialDirectory) {
+          await registerPartials(partialDirectory);
+        }
 
-      const template = compile(html, compileOptions);
+        const template = compile(html, compileOptions);
 
-      return template(context, runtimeOptions);
+        const result = template(context, runtimeOptions);
+
+        return result;
+      },
     },
   };
 }
