@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.1.0...v1.1.1) (2021-02-20)
+
+### Bug Fixes
+
+- ensure files are built before publishing ([8a3ad6f](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/8a3ad6f9e5784b7ce16a694690103fb72a0e1a7e))
+
 ## [1.1.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.0.4...v1.1.0) (2021-02-20)
 
 ### Features
