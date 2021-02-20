@@ -137,6 +137,17 @@ export default {
 };
 ```
 
+## Built-In Helpers
+
+### `resolve-from-root`
+
+You can resolve a file path relative to the Vite root using the `resolve-from-root` helper. This assists with injecting other files, like linking to a CSS file, within a partial.
+
+```hbs
+<!-- partials/head.hbs -->
+<link rel="stylesheet" href="{{resolve-from-root 'css/global.css'}}" />
+```
+
 ## Quirks
 
 - Assets included in a partial using a relative path will _probably_ not work how you would first expect; the relative path is left alone, making it relative to the _output_ file, not the partial itself. This will (hopefully) be resolved in a future release.

@@ -1,4 +1,5 @@
-import { compile, RuntimeOptions } from 'handlebars';
+import { compile, registerHelper, RuntimeOptions } from 'handlebars';
+import { resolve } from 'path';
 import { Plugin as VitePlugin } from 'vite';
 import { registerPartials } from './partials';
 
@@ -18,8 +19,18 @@ export default function handlebars({
   runtimeOptions,
   partialDirectory,
 }: HandlebarsPluginConfig = {}): VitePlugin {
+  let root: string;
+
+  registerHelper('resolve-from-root', function (path) {
+    return resolve(root, path);
+  });
+
   return {
     name: 'handlebars',
+
+    config(config) {
+      root = config.root;
+    },
 
     transformIndexHtml: {
       // Ensure Handlebars runs _before_ any bundling
