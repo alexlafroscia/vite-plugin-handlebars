@@ -28,7 +28,7 @@ export default function handlebars({
   return {
     name: 'handlebars',
 
-    config(config) {
+    configResolved(config) {
       root = config.root;
     },
 
