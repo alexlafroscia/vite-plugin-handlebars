@@ -1,26 +1,48 @@
-import { resolve } from 'path';
-import { mkdtemp } from 'fs/promises';
-import { build, fixtureFor, getHtmlSource } from './helpers';
+import { Factory as FixtureFactory } from 'file-fixture-factory';
+import { build, getHtmlSource } from './helpers';
 
-const BASIC_PARTIAL_APP = fixtureFor('partials');
-const NO_PARTIAL_DIRECTORY_APP = fixtureFor('no-partial-directory');
+const factory = new FixtureFactory('vite-plugin-handlebars');
 
-test('it allows for injecting a partial', async () => {
-  const result = await build(BASIC_PARTIAL_APP, {
-    partialDirectory: resolve(BASIC_PARTIAL_APP, 'partials'),
+afterAll(async () => {
+  await factory.disposeAll();
+});
+
+test('it allows for injecting an HTML partial', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '{{> header }}',
+    partials: {
+      'header.html': '<h1>Title</h1>',
+    },
+  });
+  const result = await build(temp.dir, {
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 
-  // Inject a HTML file as a partial
-  expect(html).toContain('<header><h1>Title</h1></header>');
+  expect(html).toContain('<h1>Title</h1>');
+});
 
-  // Inject a HBS file as a partial
-  expect(html).toContain('<footer></footer>');
+test('it allows for injecting an HBS partial', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '{{> header }}',
+    partials: {
+      'header.hbs': '<h1>Title</h1>',
+    },
+  });
+  const result = await build(temp.dir, {
+    partialDirectory: temp.path('partials'),
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<h1>Title</h1>');
 });
 
 test('it handles no partial directory existing', async () => {
-  const result = await build(NO_PARTIAL_DIRECTORY_APP, {
-    partialDirectory: resolve(NO_PARTIAL_DIRECTORY_APP, 'partials'),
+  const temp = await factory.createStructure({
+    'index.html': '<h1>Title</h1>',
+  });
+  const result = await build(temp.dir, {
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 
@@ -29,11 +51,16 @@ test('it handles no partial directory existing', async () => {
 });
 
 test('it handles the partial directory being empty', async () => {
-  // Create an empty "tmp" directory to be the partial directory
-  const partialDirectory = await mkdtemp('vite-plugin-handlebars--empty-partial-directory');
+  const temp = await factory.createStructure({
+    'index.html': '<h1>Title</h1>',
+    partials: {
+      // I think this is empty "enough"?
+      '.gitkeep': '',
+    },
+  });
 
-  const result = await build(NO_PARTIAL_DIRECTORY_APP, {
-    partialDirectory,
+  const result = await build(temp.dir, {
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 

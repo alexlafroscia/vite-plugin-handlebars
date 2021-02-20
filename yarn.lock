@@ -2659,7 +2659,7 @@ debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0:
+debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
@@ -3284,6 +3284,13 @@ file-entry-cache@^6.0.0:
   integrity sha512-fqoO76jZ3ZnYrXLDRxBR1YvOvc0k844kcOg40bgsPrE25LAb/PDqTY+ho64Xh2c8ZXgIKldchCFHczG2UVRcWA==
   dependencies:
     flat-cache "^3.0.4"
+
+file-fixture-factory@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/file-fixture-factory/-/file-fixture-factory-1.0.0.tgz#f451a05611096106773a53b5e7547d00b12b5036"
+  integrity sha512-TjoMmo1nNzxivTTyLyB9BkN5B9oMOEOIEsFctSqD4KcizguulT281VL69Su4VAHCC++ga7P7qljLWSr1mWOrnw==
+  dependencies:
+    debug "^4.3.1"
 
 filesize@^6.1.0:
   version "6.1.0"

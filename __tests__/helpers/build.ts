@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import { build as viteBuild } from 'vite';
 import handlebars, { HandlebarsPluginConfig } from '../../src/index';
 
@@ -13,8 +12,4 @@ export function build(root: string, config: HandlebarsPluginConfig = {}): BuildR
     },
     plugins: [handlebars(config)],
   });
-}
-
-export function fixtureFor(site: string): string {
-  return resolve(__dirname, '../../__fixtures__', site);
 }
