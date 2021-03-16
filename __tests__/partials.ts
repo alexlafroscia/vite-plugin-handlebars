@@ -15,7 +15,7 @@ test('it allows for injecting an HTML partial', async () => {
     },
   });
   const result = await build(temp.dir, {
-    partialDirectory: temp.path('partials'),
+    partialDirectory: [temp.path('partials')],
   });
   const html = getHtmlSource(result);
 
@@ -30,7 +30,23 @@ test('it allows for injecting an HBS partial', async () => {
     },
   });
   const result = await build(temp.dir, {
-    partialDirectory: temp.path('partials'),
+    partialDirectory: [temp.path('partials')],
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<h1>Title</h1>');
+});
+
+test('it allows for injecting an HBS partial with multiple partial folders', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '{{> header }}',
+    partials: {
+      'header.hbs': '<h1>Title</h1>',
+      'header2.hbs': '<h1>Different title</h1>',
+    },
+  });
+  const result = await build(temp.dir, {
+    partialDirectory: [temp.path('partials')],
   });
   const html = getHtmlSource(result);
 
@@ -42,7 +58,7 @@ test('it handles no partial directory existing', async () => {
     'index.html': '<h1>Title</h1>',
   });
   const result = await build(temp.dir, {
-    partialDirectory: temp.path('partials'),
+    partialDirectory: [temp.path('partials')],
   });
   const html = getHtmlSource(result);
 
@@ -60,7 +76,7 @@ test('it handles the partial directory being empty', async () => {
   });
 
   const result = await build(temp.dir, {
-    partialDirectory: temp.path('partials'),
+    partialDirectory: [temp.path('partials')],
   });
   const html = getHtmlSource(result);
 

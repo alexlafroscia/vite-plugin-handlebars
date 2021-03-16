@@ -10,7 +10,7 @@ export interface HandlebarsPluginConfig {
   context?: Record<string, unknown>;
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
-  partialDirectory?: string;
+  partialDirectory?: Array<string>;
 }
 
 export default function handlebars({
