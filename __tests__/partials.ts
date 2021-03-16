@@ -39,7 +39,7 @@ test('it allows for injecting an HBS partial', async () => {
 
 test('it allows for injecting an HBS partial with multiple partial folders', async () => {
   const temp = await factory.createStructure({
-    'index.html': '{{> header }}',
+    'index.html': '{{> header }}{{> header2 }}',
     partials: {
       'header.hbs': '<h1>Title</h1>',
       'header2.hbs': '<h1>Different title</h1>',
@@ -50,7 +50,7 @@ test('it allows for injecting an HBS partial with multiple partial folders', asy
   });
   const html = getHtmlSource(result);
 
-  expect(html).toContain('<h1>Title</h1>');
+  expect(html).toContain('<h1>Title</h1><h1>Different title</h1>');
 });
 
 test('it handles no partial directory existing', async () => {
