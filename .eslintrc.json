@@ -6,6 +6,12 @@
       "env": {
         "node": true
       }
+    },
+    {
+      "files": ["hmrClient/client.js"],
+      "env": {
+        "browser": true
+      }
     }
   ]
 }

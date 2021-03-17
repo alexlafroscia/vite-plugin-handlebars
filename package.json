@@ -13,7 +13,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "microbundle -f es,cjs --target node --no-compress",
+    "build": "yarn run build:plugin && yarn run build:hmrClient",
+    "build:plugin": "microbundle -f es,cjs --target node --no-compress",
+    "build:hmrClient": "microbundle -i hmrClient/client.js -o dist/hmrClient.js --no-pkg-main --no-sourcemap -f modern --no-compress --target web",
     "lint": "eslint .",
     "test": "jest",
     "release": "standard-version",
