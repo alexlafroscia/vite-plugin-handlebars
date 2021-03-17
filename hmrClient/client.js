@@ -29,6 +29,6 @@ function replacePartial(partialName, newContent) {
 
 if (import.meta.hot) {
   import.meta.hot.on('plugin-handlebars-partial-update', (data) => {
-    replacePartial(data.partialName, data.content); // Specifically using `childNodes` because `children` does not include text nodes it seems
+    replacePartial(data.partialName, data.content);
   });
 }
