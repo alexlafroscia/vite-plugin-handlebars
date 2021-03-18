@@ -18,7 +18,7 @@ test('it can resolve a path from the root', async () => {
     },
   });
   const result = await build(temp.dir, {
-    partialDirectory: temp.path('partials'),
+    partialDirectory: [temp.path('partials')],
   });
   const html = getHtmlSource(result);
 
