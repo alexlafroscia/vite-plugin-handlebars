@@ -7,10 +7,9 @@ import { resolve, parse } from 'path';
  * Registers each HTML file in a directory as Handlebars partial
  */
 export async function registerPartials(directoryPath: string | Array<string>): Promise<void> {
-  // Convert to array
-  directoryPath = [].concat(directoryPath);
+  const pathArray: Array<string> = Array.isArray(directoryPath) ? directoryPath : [directoryPath];
 
-  for await (const path of directoryPath) {
+  for await (const path of pathArray) {
     let dir: Dir;
 
     try {

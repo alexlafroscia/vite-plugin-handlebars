@@ -82,7 +82,9 @@ export default {
 };
 ```
 
-Each file in this directory (`.html` or `.hbs`) will become registered as a partial. The name of the file is used to invoke it. So, with the above configuration and the following files:
+If you want to use multiple partial folders, an array can be submitted.
+
+Each file in these directories (`.html` or `.hbs`) will become registered as a partial. The name of the file is used to invoke it. So, with the above configuration and the following files:
 
 ```html
 <!-- partials/header.hbs -->

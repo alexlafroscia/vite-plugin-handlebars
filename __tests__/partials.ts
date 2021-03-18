@@ -15,7 +15,7 @@ test('it allows for injecting an HTML partial', async () => {
     },
   });
   const result = await build(temp.dir, {
-    partialDirectory: [temp.path('partials')],
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 
@@ -30,7 +30,7 @@ test('it allows for injecting an HBS partial', async () => {
     },
   });
   const result = await build(temp.dir, {
-    partialDirectory: [temp.path('partials')],
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 
@@ -60,7 +60,7 @@ test('it handles no partial directory existing', async () => {
     'index.html': '<h1>Title</h1>',
   });
   const result = await build(temp.dir, {
-    partialDirectory: [temp.path('partials')],
+    partialDirectory: temp.path('partials'),
   });
   const html = getHtmlSource(result);
 
