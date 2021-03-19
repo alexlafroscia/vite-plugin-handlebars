@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.1.2...v1.2.0) (2021-03-19)
+
+### Features
+
+- add ability to process multiple partial folders ([#28](https://github.com/alexlafroscia/vite-plugin-handlebars/issues/28)) ([fbcb39f](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/fbcb39f4c14e2279f5dccc391f0fd00109752545))
+- support nested partial directories ([9e657b2](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/9e657b2fecc045eb0d1b49a3304cde585522aa05))
+
+### Bug Fixes
+
+- only register html or hbs files as partials ([15c67b2](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/15c67b225543e99ac9553355a261dcbb269ffda6))
+
 ### [1.1.2](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.1.1...v1.1.2) (2021-02-20)
 
 ### Bug Fixes
