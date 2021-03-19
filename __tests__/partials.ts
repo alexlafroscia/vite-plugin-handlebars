@@ -55,6 +55,23 @@ test('it can support multiple partial directories', async () => {
   expect(html).toContain('<h1>Title</h1><h1>Different title</h1>');
 });
 
+test('it supports sub-directories in the partial directory', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '{{> foo/header }}',
+    partials: {
+      foo: {
+        'header.hbs': '<h1>Title</h1>',
+      },
+    },
+  });
+  const result = await build(temp.dir, {
+    partialDirectory: temp.path('partials'),
+  });
+  // const html = getHtmlSource(result);
+
+  // expect(html).toContain('<h1>Title</h1>');
+});
+
 test('it handles no partial directory existing', async () => {
   const temp = await factory.createStructure({
     'index.html': '<h1>Title</h1>',
