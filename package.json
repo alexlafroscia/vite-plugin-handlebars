@@ -29,7 +29,7 @@
     "@movable/eslint-config-typescript": "^0.2.1",
     "@movable/prettier-config": "^0.3.6",
     "@types/jest": "^26.0.20",
-    "file-fixture-factory": "^1.0.0",
+    "file-fixture-factory": "^1.0.1",
     "husky": "^5.0.9",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.3",

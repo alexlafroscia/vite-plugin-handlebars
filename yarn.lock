@@ -3282,10 +3282,10 @@ file-entry-cache@^6.0.1:
   dependencies:
     flat-cache "^3.0.4"
 
-file-fixture-factory@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/file-fixture-factory/-/file-fixture-factory-1.0.0.tgz#f451a05611096106773a53b5e7547d00b12b5036"
-  integrity sha512-TjoMmo1nNzxivTTyLyB9BkN5B9oMOEOIEsFctSqD4KcizguulT281VL69Su4VAHCC++ga7P7qljLWSr1mWOrnw==
+file-fixture-factory@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/file-fixture-factory/-/file-fixture-factory-1.0.1.tgz#f53fbdee75beb9e6bfd7d94c2af3506ec5bb99a1"
+  integrity sha512-+cxAzM+SdUjmT7+FLpMYSd6Su+HP9zAsYEpUfgNxv1ovyzOU2Qy0XkWgu8LlQ0W09vDyNkiBDGPTBPrAb3F90Q==
   dependencies:
     debug "^4.3.1"
 
