@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.2.0...v1.3.0) (2021-03-20)
+
+### Features
+
+- support functions as context values ([9780f4b](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/9780f4b56dbc62d9bc0846fe43eef0298d3be611))
+
 ## [1.2.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.1.2...v1.2.0) (2021-03-19)
 
 ### Features
