@@ -27,6 +27,7 @@
     "@movable/eslint-config": "^0.6.9",
     "@movable/eslint-config-typescript": "^0.2.1",
     "@movable/prettier-config": "^0.3.6",
+    "@tsconfig/node14": "^1.0.0",
     "@types/jest": "^26.0.20",
     "file-fixture-factory": "^1.0.1",
     "husky": "^5.0.9",
