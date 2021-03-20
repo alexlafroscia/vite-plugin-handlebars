@@ -64,6 +64,8 @@ export default {
 
 This will result in `<h1>Hello, world!</h1>` in your output HTML file.
 
+You can also provide a function, either as the `context` key or any of the keys within the object, which will be evaluated to create the value that will be made available inside your application.
+
 ### Partials
 
 If you want to make use of [partials](https://handlebarsjs.com/guide/partials.html#basic-partials) in your HTML files, you _must_ define the `partialDirectory` option for the `handlebars` plugin.

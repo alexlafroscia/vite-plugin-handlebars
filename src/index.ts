@@ -2,12 +2,13 @@ import { compile, registerHelper, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
 import { Plugin as VitePlugin } from 'vite';
 import { registerPartials } from './partials';
+import { Context, resolveContext } from './context';
 
 type CompileArguments = Parameters<typeof compile>;
 type CompileOptions = CompileArguments[1];
 
 export interface HandlebarsPluginConfig {
-  context?: Record<string, unknown>;
+  context?: Context;
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
   partialDirectory?: string | Array<string>;
@@ -43,7 +44,8 @@ export default function handlebars({
 
         const template = compile(html, compileOptions);
 
-        const result = template(context, runtimeOptions);
+        const resolvedContext = await resolveContext(context);
+        const result = template(resolvedContext, runtimeOptions);
 
         return result;
       },

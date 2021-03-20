@@ -16,3 +16,31 @@ test('it processes Handlebars variables', async () => {
 
   expect(html).toContain('<p>bar</p>');
 });
+
+test('it evaluates functions as `context` keys', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '<p>{{foo}}</p>',
+  });
+  const result = await build(temp.dir, {
+    context: {
+      foo: () => 'bar',
+    },
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<p>bar</p>');
+});
+
+test('it evaluates a `context` function', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '<p>{{foo}}</p>',
+  });
+  const result = await build(temp.dir, {
+    context: () => ({
+      foo: 'bar',
+    }),
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<p>bar</p>');
+});
