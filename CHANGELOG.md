@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.3.0...v1.4.0) (2021-03-21)
+
+### Features
+
+- reload page on partial change ([3976806](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/3976806caf6d4a68d00a6fa38b7b83a0150c979b)), closes [#2](https://github.com/alexlafroscia/vite-plugin-handlebars/issues/2)
+
 ## [1.3.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.2.0...v1.3.0) (2021-03-20)
 
 ### Features
