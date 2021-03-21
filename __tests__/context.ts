@@ -19,19 +19,20 @@ test('it processes Handlebars variables', async () => {
 
 test('it evaluates functions as `context` keys', async () => {
   const temp = await factory.createStructure({
-    'index.html': '<p>{{foo}}</p>',
+    'index.html': '<p>{{foo}} {{bar}}</p>',
   });
   const result = await build(temp.dir, {
     context: {
-      foo: () => 'bar',
+      foo: () => 'foo',
+      bar: () => Promise.resolve('bar'),
     },
   });
   const html = getHtmlSource(result);
 
-  expect(html).toContain('<p>bar</p>');
+  expect(html).toContain('<p>foo bar</p>');
 });
 
-test('it evaluates a `context` function', async () => {
+test('it evaluates a synchronous `context` function', async () => {
   const temp = await factory.createStructure({
     'index.html': '<p>{{foo}}</p>',
   });
@@ -39,6 +40,21 @@ test('it evaluates a `context` function', async () => {
     context: () => ({
       foo: 'bar',
     }),
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<p>bar</p>');
+});
+
+test('it evaluates an asynchronous `context` function', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '<p>{{foo}}</p>',
+  });
+  const result = await build(temp.dir, {
+    context: () =>
+      Promise.resolve({
+        foo: 'bar',
+      }),
   });
   const html = getHtmlSource(result);
 

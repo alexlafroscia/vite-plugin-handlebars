@@ -1,4 +1,7 @@
-export type Context = Record<string, unknown> | (() => Record<string, unknown>);
+export type Context =
+  | Record<string, unknown>
+  | (() => Record<string, unknown>)
+  | (() => Promise<Record<string, unknown>>);
 
 export async function resolveContext(
   context: Context | undefined
@@ -8,7 +11,7 @@ export async function resolveContext(
   }
 
   if (typeof context === 'function') {
-    return resolveContext(context());
+    return resolveContext(await context());
   }
 
   const output: Record<string, unknown> = {};
@@ -17,7 +20,7 @@ export async function resolveContext(
     const value = context[key];
 
     if (typeof value === 'function') {
-      output[key] = value();
+      output[key] = await value();
     } else {
       output[key] = context[key];
     }
