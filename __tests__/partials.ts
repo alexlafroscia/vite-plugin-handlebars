@@ -67,9 +67,9 @@ test('it supports sub-directories in the partial directory', async () => {
   const result = await build(temp.dir, {
     partialDirectory: temp.path('partials'),
   });
-  // const html = getHtmlSource(result);
+  const html = getHtmlSource(result);
 
-  // expect(html).toContain('<h1>Title</h1>');
+  expect(html).toContain('<h1>Title</h1>');
 });
 
 test('it handles no partial directory existing', async () => {
