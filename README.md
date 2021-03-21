@@ -141,6 +141,23 @@ export default {
 };
 ```
 
+### Disabling Browser Refresh on Partial Change
+
+By default, any time a partial changes, your browser window will be full reloaded. If you want to disable this behavior, you can set `reloadOnPartialChange` to `false`:
+
+```javascript
+// vite.config.js
+import handlebars from 'vite-plugin-handlebars';
+
+export default {
+  plugins: [
+    handlebars({
+      reloadOnPartialChange: false,
+    }),
+  ],
+};
+```
+
 ## Built-In Helpers
 
 ### `resolve-from-root`
