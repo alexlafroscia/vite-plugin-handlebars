@@ -9,6 +9,7 @@ type CompileOptions = CompileArguments[1];
 
 export interface HandlebarsPluginConfig {
   context?: Context;
+  reloadOnPartialChange?: boolean;
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
   partialDirectory?: string | Array<string>;
@@ -16,10 +17,14 @@ export interface HandlebarsPluginConfig {
 
 export default function handlebars({
   context,
+  reloadOnPartialChange = true,
   compileOptions,
   runtimeOptions,
   partialDirectory,
 }: HandlebarsPluginConfig = {}): VitePlugin {
+  // Keep track of what partials are registered
+  const partialsSet = new Set<string>();
+
   let root: string;
 
   registerHelper('resolve-from-root', function (path) {
@@ -33,13 +38,23 @@ export default function handlebars({
       root = config.root;
     },
 
+    async handleHotUpdate({ server, file }) {
+      if (reloadOnPartialChange && partialsSet.has(file)) {
+        server.ws.send({
+          type: 'full-reload',
+        });
+      }
+
+      return [];
+    },
+
     transformIndexHtml: {
       // Ensure Handlebars runs _before_ any bundling
       enforce: 'pre',
 
       async transform(html: string): Promise<string> {
         if (partialDirectory) {
-          await registerPartials(partialDirectory);
+          await registerPartials(partialDirectory, partialsSet);
         }
 
         const template = compile(html, compileOptions);

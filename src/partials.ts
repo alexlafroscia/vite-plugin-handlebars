@@ -20,7 +20,10 @@ async function* walk(dir: string): AsyncGenerator<string> {
 /**
  * Registers each HTML file in a directory as Handlebars partial
  */
-export async function registerPartials(directoryPath: string | Array<string>): Promise<void> {
+export async function registerPartials(
+  directoryPath: string | Array<string>,
+  partialsSet: Set<string>
+): Promise<void> {
   const pathArray: Array<string> = Array.isArray(directoryPath) ? directoryPath : [directoryPath];
 
   for await (const path of pathArray) {
@@ -31,6 +34,8 @@ export async function registerPartials(directoryPath: string | Array<string>): P
         if (VALID_EXTENSIONS.has(parsedPath.ext)) {
           const partialName = join(parsedPath.dir, parsedPath.name).replace(`${path}/`, '');
           const content = await readFile(fileName);
+
+          partialsSet.add(fileName);
 
           registerPartial(partialName, content.toString());
         }
