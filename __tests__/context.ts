@@ -60,3 +60,20 @@ test('it evaluates an asynchronous `context` function', async () => {
 
   expect(html).toContain('<p>bar</p>');
 });
+
+test('it evaluates an asynchronous `context` function using an id', async () => {
+  const temp = await factory.createStructure({
+    'index.html': '<p>{{foo}}</p>',
+  });
+  const data: Record<string, Record<string, unknown>> = {
+    index: {
+      foo: 'test',
+    },
+  };
+  const result = await build(temp.dir, {
+    context: (pageId: string) => Promise.resolve(data[pageId]),
+  });
+  const html = getHtmlSource(result);
+
+  expect(html).toContain('<p>test</p>');
+});
