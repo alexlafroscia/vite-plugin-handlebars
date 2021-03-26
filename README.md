@@ -76,15 +76,15 @@ const pageData = {
   },
   '/nested/subpage.html': {
     title: 'Sub Page',
-  }
-}
+  },
+};
 
 export default {
   plugins: [
     handlebars({
-      context: (pagePath) {
+      context(pagePath) {
         return pageData[pagePath];
-      }
+      },
     }),
   ],
 };
