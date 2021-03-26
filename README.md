@@ -82,8 +82,8 @@ const pageData = {
 export default {
   plugins: [
     handlebars({
-      context: (pageId) {
-        return pageData[pageId];
+      context: (pagePath) {
+        return pageData[pagePath];
       }
     }),
   ],

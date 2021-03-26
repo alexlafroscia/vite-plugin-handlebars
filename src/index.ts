@@ -1,9 +1,8 @@
 import { compile, registerHelper, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
-import { Plugin as VitePlugin } from 'vite';
-import type { IndexHtmlTransformContext } from 'vite';
+import { IndexHtmlTransformContext, Plugin as VitePlugin } from 'vite';
+import { Context, resolveContext, normalizePath } from './context';
 import { registerPartials } from './partials';
-import { Context, determineContextPageId, resolveContext } from './context';
 
 type CompileArguments = Parameters<typeof compile>;
 type CompileOptions = CompileArguments[1];
@@ -60,8 +59,7 @@ export default function handlebars({
 
         const template = compile(html, compileOptions);
 
-        const contextId = determineContextPageId(ctx);
-        const resolvedContext = await resolveContext(context, contextId);
+        const resolvedContext = await resolveContext(context, normalizePath(ctx.path));
         const result = template(resolvedContext, runtimeOptions);
 
         return result;

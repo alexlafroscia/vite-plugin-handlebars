@@ -71,7 +71,7 @@ test('it evaluates an asynchronous `context` function using an id', async () => 
     },
   };
   const result = await build(temp.dir, {
-    context: (pageId: string) => Promise.resolve(data[pageId]),
+    context: (pagePath: string) => Promise.resolve(data[pagePath]),
   });
   const html = getHtmlSource(result);
 
