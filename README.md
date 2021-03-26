@@ -71,10 +71,10 @@ You can also provide a (asynchronous) function, either as the `context` key or a
 import handlebars from 'vite-plugin-handlebars';
 
 const pageData = {
-  index: {
+  '/index.html': {
     title: 'Main Page',
   },
-  subpage: {
+  '/nested/subpage.html': {
     title: 'Sub Page',
   }
 }

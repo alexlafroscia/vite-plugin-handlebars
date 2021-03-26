@@ -66,7 +66,7 @@ test('it evaluates an asynchronous `context` function using an id', async () => 
     'index.html': '<p>{{foo}}</p>',
   });
   const data: Record<string, Record<string, unknown>> = {
-    index: {
+    '/index.html': {
       foo: 'test',
     },
   };
