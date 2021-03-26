@@ -44,9 +44,9 @@ export default function handlebars({
         server.ws.send({
           type: 'full-reload',
         });
-      }
 
-      return [];
+        return [];
+      }
     },
 
     transformIndexHtml: {
