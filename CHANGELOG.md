@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.4.2...v1.5.0) (2021-03-26)
+
+### Features
+
+- expose page path to `context` functions ([#42](https://github.com/alexlafroscia/vite-plugin-handlebars/issues/42)) ([0a4441f](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/0a4441f6ae53b81cb1c3f18dff5a0fcd6bae1455))
+
 ### [1.4.2](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.4.1...v1.4.2) (2021-03-26)
 
 ### Bug Fixes
