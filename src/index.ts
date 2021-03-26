@@ -1,8 +1,8 @@
 import { compile, registerHelper, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
-import { Plugin as VitePlugin } from 'vite';
+import { IndexHtmlTransformContext, Plugin as VitePlugin } from 'vite';
+import { Context, resolveContext, normalizePath } from './context';
 import { registerPartials } from './partials';
-import { Context, resolveContext } from './context';
 
 type CompileArguments = Parameters<typeof compile>;
 type CompileOptions = CompileArguments[1];
@@ -52,14 +52,14 @@ export default function handlebars({
       // Ensure Handlebars runs _before_ any bundling
       enforce: 'pre',
 
-      async transform(html: string): Promise<string> {
+      async transform(html: string, ctx: IndexHtmlTransformContext): Promise<string> {
         if (partialDirectory) {
           await registerPartials(partialDirectory, partialsSet);
         }
 
         const template = compile(html, compileOptions);
 
-        const resolvedContext = await resolveContext(context);
+        const resolvedContext = await resolveContext(context, normalizePath(ctx.path));
         const result = template(resolvedContext, runtimeOptions);
 
         return result;

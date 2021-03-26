@@ -64,7 +64,31 @@ export default {
 
 This will result in `<h1>Hello, world!</h1>` in your output HTML file.
 
-You can also provide a function, either as the `context` key or any of the keys within the object, which will be evaluated to create the value that will be made available inside your application.
+You can also provide a (asynchronous) function, either as the `context` key or any of the keys within the object, which will be evaluated to create the value that will be made available inside your page. This function is called with an identifier parameter based on the HTML file path which makes it possible to provide unique data to each HTML page in a multipage application setup.
+
+```javascript
+// vite.config.js
+import handlebars from 'vite-plugin-handlebars';
+
+const pageData = {
+  '/index.html': {
+    title: 'Main Page',
+  },
+  '/nested/subpage.html': {
+    title: 'Sub Page',
+  },
+};
+
+export default {
+  plugins: [
+    handlebars({
+      context(pagePath) {
+        return pageData[pagePath];
+      },
+    }),
+  ],
+};
+```
 
 ### Partials
 

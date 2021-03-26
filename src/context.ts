@@ -1,17 +1,21 @@
+import os from 'os';
+import path from 'path';
+
 export type Context =
   | Record<string, unknown>
-  | (() => Record<string, unknown>)
-  | (() => Promise<Record<string, unknown>>);
+  | ((path: string) => Record<string, unknown>)
+  | ((path: string) => Promise<Record<string, unknown>>);
 
 export async function resolveContext(
-  context: Context | undefined
+  context: Context | undefined,
+  pagePath: string
 ): Promise<Record<string, unknown> | undefined> {
   if (typeof context === 'undefined') {
     return context;
   }
 
   if (typeof context === 'function') {
-    return resolveContext(await context());
+    return resolveContext(await context(pagePath), pagePath);
   }
 
   const output: Record<string, unknown> = {};
@@ -20,11 +24,16 @@ export async function resolveContext(
     const value = context[key];
 
     if (typeof value === 'function') {
-      output[key] = await value();
+      output[key] = await value(pagePath);
     } else {
-      output[key] = context[key];
+      output[key] = value;
     }
   }
 
   return output;
+}
+
+const isWindows = os.platform() === 'win32';
+export function normalizePath(id: string): string {
+  return path.posix.normalize(isWindows ? id.replace(/\\/g, '/') : id);
 }
