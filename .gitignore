@@ -1,2 +1,5 @@
 # TypeScript Output
 dist/
+
+# Dependencies
+node_modules/
