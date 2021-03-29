@@ -1,13 +1,16 @@
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { serve, waitFor, TimeoutError } from './helpers';
 
+const testWithoutWindows = (...args: Parameters<typeof test>) =>
+  process.platform === 'win32' ? test.skip(...args) : test(...args);
+
 const factory = new FixtureFactory('vite-plugin-handlebars');
 
 afterAll(async () => {
   await factory.disposeAll();
 });
 
-test('it sends a `full-reload` event when an `hbs` partial changes', async () => {
+testWithoutWindows('it sends a `full-reload` event when an `hbs` partial changes', async () => {
   const temp = await factory.createStructure({
     'index.html': '{{> foo }}',
     partials: {
@@ -35,7 +38,7 @@ test('it sends a `full-reload` event when an `hbs` partial changes', async () =>
   await devServer.close();
 });
 
-test('it sends a `full-reload` event when an `html` partial changes', async () => {
+testWithoutWindows('it sends a `full-reload` event when an `html` partial changes', async () => {
   const temp = await factory.createStructure({
     'index.html': '{{> foo }}',
     partials: {
@@ -63,7 +66,7 @@ test('it sends a `full-reload` event when an `html` partial changes', async () =
   await devServer.close();
 });
 
-test('reloading the browser can be disabled', async () => {
+testWithoutWindows('reloading the browser can be disabled', async () => {
   // Exact number of assertions between `waitFor` and the thrown TimeoutError
   expect.assertions(305);
 
