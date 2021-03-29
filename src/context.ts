@@ -1,6 +1,3 @@
-import os from 'os';
-import path from 'path';
-
 export type Context =
   | Record<string, unknown>
   | ((path: string) => Record<string, unknown>)
@@ -31,9 +28,4 @@ export async function resolveContext(
   }
 
   return output;
-}
-
-const isWindows = os.platform() === 'win32';
-export function normalizePath(id: string): string {
-  return path.posix.normalize(isWindows ? id.replace(/\\/g, '/') : id);
 }

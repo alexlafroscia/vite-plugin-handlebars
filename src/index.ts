@@ -1,7 +1,7 @@
 import { compile, registerHelper, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
-import { IndexHtmlTransformContext, Plugin as VitePlugin } from 'vite';
-import { Context, resolveContext, normalizePath } from './context';
+import { IndexHtmlTransformContext, Plugin as VitePlugin, normalizePath } from 'vite';
+import { Context, resolveContext } from './context';
 import { registerPartials } from './partials';
 
 type CompileArguments = Parameters<typeof compile>;
