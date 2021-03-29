@@ -1,5 +1,6 @@
 import { registerPartial } from 'handlebars';
 import { opendir, readFile } from 'fs/promises';
+import { normalizePath } from 'vite';
 import { join, parse } from 'path';
 
 const VALID_EXTENSIONS = new Set(['.html', '.hbs']);
@@ -28,11 +29,20 @@ export async function registerPartials(
 
   for await (const path of pathArray) {
     try {
+      const normalizedPath = normalizePath(path);
+
       for await (const fileName of walk(path)) {
-        const parsedPath = parse(fileName);
+        const normalizedFileName = normalizePath(fileName);
+        const parsedPath = parse(normalizedFileName);
 
         if (VALID_EXTENSIONS.has(parsedPath.ext)) {
-          const partialName = join(parsedPath.dir, parsedPath.name).replace(`${path}/`, '');
+          let partialName = parsedPath.name;
+
+          if (parsedPath.dir !== normalizedPath) {
+            const prefix = parsedPath.dir.replace(`${normalizedPath}/`, '');
+            partialName = `${prefix}/${parsedPath.name}`;
+          }
+
           const content = await readFile(fileName);
 
           partialsSet.add(fileName);
