@@ -1,9 +1,17 @@
-import { RollupOutput, OutputAsset, OutputChunk } from 'rollup';
+import type { RollupOutput, RollupWatcher, OutputAsset, OutputChunk } from 'rollup';
 import { parse } from 'path';
 
 type Output = OutputAsset | OutputChunk;
 
-export function getHtmlSource(rollupOutput: RollupOutput | RollupOutput[]): string {
+function outputIsWatcher(output: unknown): output is RollupWatcher {
+  return typeof output === 'object' && output !== null && !('output' in output);
+}
+
+export function getHtmlSource(rollupOutput: RollupOutput | RollupOutput[] | RollupWatcher): string {
+  if (outputIsWatcher(rollupOutput)) {
+    throw new Error('Cannnot get HTML source from Rollup Watcher');
+  }
+
   const output: Output[] = Array.isArray(rollupOutput)
     ? rollupOutput
         .map((rollupOutput) => rollupOutput.output)
