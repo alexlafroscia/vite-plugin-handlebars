@@ -13,6 +13,7 @@ export interface HandlebarsPluginConfig {
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
   partialDirectory?: string | Array<string>;
+  registerHelpers?: { [key: string]: any };
 }
 
 export default function handlebars({
@@ -21,6 +22,7 @@ export default function handlebars({
   compileOptions,
   runtimeOptions,
   partialDirectory,
+  registerHelpers,
 }: HandlebarsPluginConfig = {}): VitePlugin {
   // Keep track of what partials are registered
   const partialsSet = new Set<string>();
@@ -30,6 +32,18 @@ export default function handlebars({
   registerHelper('resolve-from-root', function (path) {
     return resolve(root, path);
   });
+
+  if (registerHelpers) {
+    const helpers = Object.keys(registerHelpers);
+
+    if (helpers?.length) {
+      helpers.forEach((helper) => {
+        if (typeof registerHelpers[helper] === 'function') {
+          registerHelper(helper, registerHelpers[helper]);
+        }
+      });
+    }
+  }
 
   return {
     name: 'handlebars',
