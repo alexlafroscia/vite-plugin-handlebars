@@ -1,4 +1,4 @@
-import { compile, registerHelper, RuntimeOptions } from 'handlebars';
+import { compile, registerHelper, HelperDeclareSpec, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
 import { IndexHtmlTransformContext, Plugin as VitePlugin, normalizePath } from 'vite';
 import { Context, resolveContext } from './context';
@@ -13,6 +13,7 @@ export interface HandlebarsPluginConfig {
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
   partialDirectory?: string | Array<string>;
+  helpers?: HelperDeclareSpec;
 }
 
 export default function handlebars({
@@ -21,6 +22,7 @@ export default function handlebars({
   compileOptions,
   runtimeOptions,
   partialDirectory,
+  helpers,
 }: HandlebarsPluginConfig = {}): VitePlugin {
   // Keep track of what partials are registered
   const partialsSet = new Set<string>();
@@ -30,6 +32,10 @@ export default function handlebars({
   registerHelper('resolve-from-root', function (path) {
     return resolve(root, path);
   });
+
+  if (helpers) {
+    registerHelper(helpers);
+  }
 
   return {
     name: 'handlebars',
