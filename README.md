@@ -134,6 +134,28 @@ Your output website content would become:
 
 Make sure to review the [quirks section](#quirks) for information on potentially-unexpected behavior.
 
+### Helpers
+
+Custom helpers can be registered using the `helpers` configuration option:
+
+```js
+// vite.config.js
+import { resolve } from 'path';
+import handlebars from 'vite-plugin-handlebars';
+
+export default {
+  plugins: [
+    handlebars({
+      helpers: {
+        capitalize: (value) => value.toUpperCase(),
+      },
+    }),
+  ],
+};
+```
+
+For more information on helpers, see [the Handlebars documentation](https://handlebarsjs.com/api-reference/helpers.html).
+
 ### Other Handlebars Options
 
 All other Handlebars configuration options can also be passed through.
