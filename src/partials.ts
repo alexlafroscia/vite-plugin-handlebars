@@ -50,7 +50,7 @@ export async function registerPartials(
           registerPartial(partialName, content.toString());
         }
       }
-    } catch (e) {
+    } catch (e: any) {
       // This error indicates the partial directory doesn't exist; ignore it
       if (e.code !== 'ENOENT') {
         throw e;
