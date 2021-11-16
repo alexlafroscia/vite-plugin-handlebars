@@ -1,5 +1,6 @@
 import { compile, registerHelper, HelperDeclareSpec, RuntimeOptions } from 'handlebars';
 import { resolve } from 'path';
+import { platform } from 'os';
 import { IndexHtmlTransformContext, Plugin as VitePlugin, normalizePath } from 'vite';
 import { Context, resolveContext } from './context';
 import { registerPartials } from './partials';
@@ -30,7 +31,13 @@ export default function handlebars({
   let root: string;
 
   registerHelper('resolve-from-root', function (path) {
-    return resolve(root, path);
+    const resolvedPath = resolve(root, path);
+
+    if (platform() === 'win32') {
+      return '/' + resolvedPath;
+    }
+
+    return resolvedPath;
   });
 
   if (helpers) {
