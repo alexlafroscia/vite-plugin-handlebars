@@ -44,8 +44,8 @@ export default function handlebars({
       root = config.root;
     },
 
-    async handleHotUpdate({ server, file }) {
-      if (reloadOnPartialChange && partialsSet.has(file)) {
+    async handleHotUpdate({ server }) {
+      if (reloadOnPartialChange) {
         server.ws.send({
           type: 'full-reload',
         });
