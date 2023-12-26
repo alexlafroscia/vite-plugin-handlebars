@@ -56,9 +56,9 @@ export default function handlebars({
 
     transformIndexHtml: {
       // Ensure Handlebars runs _before_ any bundling
-      enforce: 'pre',
+      order: 'pre',
 
-      async transform(html: string, ctx: IndexHtmlTransformContext): Promise<string> {
+      async handler(html: string, ctx: IndexHtmlTransformContext): Promise<string> {
         if (partialDirectory) {
           await registerPartials(partialDirectory, partialsSet);
         }
