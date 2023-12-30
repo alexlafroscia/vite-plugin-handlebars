@@ -1,3 +1,4 @@
+import { test, afterAll, expect, vi } from 'vitest';
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { serve, waitFor, TimeoutError } from './helpers';
 
@@ -21,7 +22,7 @@ testWithoutWindows('it sends a `full-reload` event when an `hbs` partial changes
     partialDirectory: temp.path('partials'),
   });
 
-  devServer.ws.send = jest.fn();
+  devServer.ws.send = vi.fn();
 
   // Fake the user visiting the index page to build it
   await devServer.transformIndexHtml('/', await temp.read('index.html'));
@@ -49,7 +50,7 @@ testWithoutWindows('it sends a `full-reload` event when an `html` partial change
     partialDirectory: temp.path('partials'),
   });
 
-  devServer.ws.send = jest.fn();
+  devServer.ws.send = vi.fn();
 
   // Fake the user visiting the index page to build it
   await devServer.transformIndexHtml('/', await temp.read('index.html'));
@@ -81,7 +82,7 @@ testWithoutWindows('reloading the browser can be disabled', async () => {
     partialDirectory: temp.path('partials'),
   });
 
-  devServer.ws.send = jest.fn();
+  devServer.ws.send = vi.fn();
 
   // Fake the user visiting the index page to build it
   await devServer.transformIndexHtml('/', await temp.read('index.html'));
