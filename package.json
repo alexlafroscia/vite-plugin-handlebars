@@ -11,7 +11,6 @@
   "repository": "git@github.com:alexlafroscia/vite-plugin-handlebars.git",
   "author": "Alex LaFroscia <alex@lafroscia.com>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "build": "microbundle -f es,cjs --target node --no-compress",
     "lint": "eslint .",
@@ -49,7 +48,8 @@
     }
   },
   "volta": {
-    "node": "14.15.4",
+    "node": "20.10.0",
     "yarn": "1.22.10"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
