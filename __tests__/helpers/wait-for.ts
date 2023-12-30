@@ -12,7 +12,7 @@ type WaitForOptions = {
 
 export async function waitFor(
   assertionCallback: AssertionCallback,
-  { timeout = 1000 }: WaitForOptions = {}
+  { timeout = 1000 }: WaitForOptions = {},
 ): Promise<void> {
   const waitUntilTimeoutError = new TimeoutError('Condition not met within timeout');
 

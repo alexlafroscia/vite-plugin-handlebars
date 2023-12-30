@@ -32,7 +32,7 @@ testWithoutWindows('it sends a `full-reload` event when an `hbs` partial changes
     () => {
       expect(devServer.ws.send).toBeCalledWith({ type: 'full-reload' });
     },
-    { timeout: 3000 }
+    { timeout: 3000 },
   );
 
   await devServer.close();
@@ -60,7 +60,7 @@ testWithoutWindows('it sends a `full-reload` event when an `html` partial change
     () => {
       expect(devServer.ws.send).toBeCalledWith({ type: 'full-reload' });
     },
-    { timeout: 3000 }
+    { timeout: 3000 },
   );
 
   await devServer.close();
@@ -93,7 +93,7 @@ testWithoutWindows('reloading the browser can be disabled', async () => {
       () => {
         expect(devServer.ws.send).toBeCalledWith({ type: 'full-reload' });
       },
-      { timeout: 3000 }
+      { timeout: 3000 },
     );
   } catch (e) {
     expect(e).toBeInstanceOf(TimeoutError);
