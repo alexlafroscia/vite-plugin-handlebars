@@ -11,7 +11,6 @@
   "repository": "git@github.com:alexlafroscia/vite-plugin-handlebars.git",
   "author": "Alex LaFroscia <alex@lafroscia.com>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "build": "microbundle -f es,cjs --target node --no-compress",
     "lint": "eslint .",
@@ -29,12 +28,20 @@
     "@movable/eslint-config-typescript": "^1.0.0",
     "@movable/prettier-config": "^0.3.6",
     "@tsconfig/node14": "^1.0.0",
+    "@types/eslint": "^8",
     "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-no-unsanitized": "^4.0.2",
+    "eslint-plugin-prettier": "^5.1.2",
     "file-fixture-factory": "^1.0.1",
     "husky": "^7.0.2",
     "jest": "^26.6.3",
     "lint-staged": "^11.0.0",
     "microbundle": "^0.15.0",
+    "prettier": "^3.1.1",
     "standard-version": "^9.1.0",
     "ts-jest": "^26.5.0",
     "typescript": "^4.1.3"
@@ -49,7 +56,8 @@
     }
   },
   "volta": {
-    "node": "14.15.4",
+    "node": "20.10.0",
     "yarn": "1.22.10"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

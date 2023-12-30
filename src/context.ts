@@ -5,7 +5,7 @@ export type Context =
 
 export async function resolveContext(
   context: Context | undefined,
-  pagePath: string
+  pagePath: string,
 ): Promise<Record<string, unknown> | undefined> {
   if (typeof context === 'undefined') {
     return context;

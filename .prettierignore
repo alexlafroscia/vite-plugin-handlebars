@@ -1,2 +1,5 @@
 # Output
 dist/
+
+# Yarn
+.yarn/

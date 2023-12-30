@@ -23,7 +23,7 @@ async function* walk(dir: string): AsyncGenerator<string> {
  */
 export async function registerPartials(
   directoryPath: string | Array<string>,
-  partialsSet: Set<string>
+  partialsSet: Set<string>,
 ): Promise<void> {
   const pathArray: Array<string> = Array.isArray(directoryPath) ? directoryPath : [directoryPath];
 

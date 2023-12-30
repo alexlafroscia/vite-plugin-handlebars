@@ -212,7 +212,7 @@ You can resolve a file path relative to the Vite root using the `resolve-from-ro
 
 ```hbs
 <!-- partials/head.hbs -->
-<link rel="stylesheet" href="{{resolve-from-root 'css/global.css'}}" />
+<link rel='stylesheet' href='{{resolve-from-root "css/global.css"}}' />
 ```
 
 ## Quirks
