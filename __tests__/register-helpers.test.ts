@@ -9,7 +9,7 @@ afterAll(async () => {
 });
 
 test('it processes Handlebars variables', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{capitalize "foo"}}</p>',
   });
   const result = await build(temp.dir, {

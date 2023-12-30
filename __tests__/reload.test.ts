@@ -12,7 +12,7 @@ afterAll(async () => {
 });
 
 testWithoutWindows('it sends a `full-reload` event when an `hbs` partial changes', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> foo }}',
     partials: {
       'foo.hbs': '<p>foo</p>',
@@ -40,7 +40,7 @@ testWithoutWindows('it sends a `full-reload` event when an `hbs` partial changes
 });
 
 testWithoutWindows('it sends a `full-reload` event when an `html` partial changes', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> foo }}',
     partials: {
       'foo.html': '<p>foo</p>',
@@ -71,7 +71,7 @@ testWithoutWindows('reloading the browser can be disabled', async () => {
   // Exact number of assertions between `waitFor` and the thrown TimeoutError
   expect.assertions(305);
 
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> foo }}',
     partials: {
       'foo.hbs': '<p>foo</p>',

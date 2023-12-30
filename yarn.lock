@@ -4815,12 +4815,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-fixture-factory@npm:^1.0.1":
-  version: 1.1.0
-  resolution: "file-fixture-factory@npm:1.1.0"
+"file-fixture-factory@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "file-fixture-factory@npm:3.1.0"
   dependencies:
     debug: "npm:^4.3.1"
-  checksum: 0657cad09ff28635a985035560a13dfc9fe004b9d50fd481828696f6067a44130d81d59919d87a7521e3f98d3664f47e36f554611165eb48b13e2ed6b91ddd27
+  checksum: c5ac4f6a125ce5e34c2a8e720f4677ed72b8614812062b4a6734680a013e33ac06702ff5b4e938718fc95f2832c970f20b15024978df6a0f17e2fb11c1e475a2
   languageName: node
   linkType: hard
 
@@ -9633,7 +9633,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-no-unsanitized: "npm:^4.0.2"
     eslint-plugin-prettier: "npm:^5.1.2"
-    file-fixture-factory: "npm:^1.0.1"
+    file-fixture-factory: "npm:^3.1.0"
     handlebars: "npm:^4.7.6"
     husky: "npm:^7.0.2"
     lint-staged: "npm:^11.0.0"

@@ -9,7 +9,7 @@ afterAll(async () => {
 });
 
 test('it can resolve a path from the root', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> head}}',
     css: {
       'global.css': '.red { color: red; }',
