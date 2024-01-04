@@ -27,7 +27,7 @@
     "@movable/eslint-config": "^0.6.9",
     "@movable/eslint-config-typescript": "^1.0.0",
     "@movable/prettier-config": "^0.3.6",
-    "@tsconfig/node14": "^1.0.0",
+    "@tsconfig/node20": "^20.1.2",
     "@types/eslint": "^8",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",

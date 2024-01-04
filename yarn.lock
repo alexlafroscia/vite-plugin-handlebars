@@ -2101,10 +2101,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node14@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "@tsconfig/node14@npm:1.0.3"
-  checksum: 67c1316d065fdaa32525bc9449ff82c197c4c19092b9663b23213c8cbbf8d88b6ed6a17898e0cbc2711950fbfaf40388938c1c748a2ee89f7234fc9e7fe2bf44
+"@tsconfig/node20@npm:^20.1.2":
+  version: 20.1.2
+  resolution: "@tsconfig/node20@npm:20.1.2"
+  checksum: e438fa9b93f0e6ea667affbbd3217692bf3f92db1b3dcbfba1dd141a7dbcd647c19ed87ce76871c723bed398759ec4a5590685f3e669b600c9371f143a19e0c1
   languageName: node
   linkType: hard
 
@@ -9414,7 +9414,7 @@ __metadata:
     "@movable/eslint-config": "npm:^0.6.9"
     "@movable/eslint-config-typescript": "npm:^1.0.0"
     "@movable/prettier-config": "npm:^0.3.6"
-    "@tsconfig/node14": "npm:^1.0.0"
+    "@tsconfig/node20": "npm:^20.1.2"
     "@types/eslint": "npm:^8"
     "@typescript-eslint/eslint-plugin": "npm:^6.16.0"
     "@typescript-eslint/parser": "npm:^6.16.0"
