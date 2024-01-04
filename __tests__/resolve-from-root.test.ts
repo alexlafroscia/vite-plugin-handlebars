@@ -24,5 +24,5 @@ test('it can resolve a path from the root', async () => {
   const html = getHtmlSource(result);
 
   // Vite processed the linked file
-  expect(html).toMatch(/href="\/assets\/index\.(.*)\.css"/);
+  expect(html).toMatch(/href="\/assets\/index-(.*)\.css"/);
 });
