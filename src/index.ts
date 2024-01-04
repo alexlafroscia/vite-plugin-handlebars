@@ -1,10 +1,12 @@
-import { compile, registerHelper, HelperDeclareSpec, RuntimeOptions } from 'handlebars';
-import { resolve } from 'path';
-import { IndexHtmlTransformContext, Plugin as VitePlugin, normalizePath } from 'vite';
-import { Context, resolveContext } from './context';
-import { registerPartials } from './partials';
+import { resolve } from 'node:path';
 
-type CompileArguments = Parameters<typeof compile>;
+import hbs, { HelperDeclareSpec, RuntimeOptions } from 'handlebars';
+import { IndexHtmlTransformContext, Plugin as VitePlugin, normalizePath } from 'vite';
+
+import { Context, resolveContext } from './context.js';
+import { registerPartials } from './partials.js';
+
+type CompileArguments = Parameters<typeof hbs.compile>;
 type CompileOptions = CompileArguments[1];
 
 export interface HandlebarsPluginConfig {
@@ -29,12 +31,12 @@ export default function handlebars({
 
   let root: string;
 
-  registerHelper('resolve-from-root', function (path) {
+  hbs.registerHelper('resolve-from-root', function (path) {
     return resolve(root, path);
   });
 
   if (helpers) {
-    registerHelper(helpers);
+    hbs.registerHelper(helpers);
   }
 
   return {
@@ -63,7 +65,7 @@ export default function handlebars({
           await registerPartials(partialDirectory, partialsSet);
         }
 
-        const template = compile(html, compileOptions);
+        const template = hbs.compile(html, compileOptions);
 
         const resolvedContext = await resolveContext(context, normalizePath(ctx.path));
         const result = template(resolvedContext, runtimeOptions);

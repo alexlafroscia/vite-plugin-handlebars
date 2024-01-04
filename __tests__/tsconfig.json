@@ -1,9 +1,7 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
-
-  "include": ["src"],
-
   "compilerOptions": {
-    "outDir": "dist"
+    "noEmit": true,
+    "moduleResolution": "bundler"
   }
 }

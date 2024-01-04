@@ -1,7 +1,9 @@
-import { registerPartial } from 'handlebars';
-import { opendir, readFile } from 'fs/promises';
+import { opendir, readFile } from 'node:fs/promises';
+import { join, parse } from 'node:path';
+
+import hbs from 'handlebars';
+
 import { normalizePath } from 'vite';
-import { join, parse } from 'path';
 
 const VALID_EXTENSIONS = new Set(['.html', '.hbs']);
 
@@ -47,12 +49,12 @@ export async function registerPartials(
 
           partialsSet.add(fileName);
 
-          registerPartial(partialName, content.toString());
+          hbs.registerPartial(partialName, content.toString());
         }
       }
     } catch (e) {
       // This error indicates the partial directory doesn't exist; ignore it
-      if (e.code !== 'ENOENT') {
+      if ((e as any).code !== 'ENOENT') {
         throw e;
       }
     }
