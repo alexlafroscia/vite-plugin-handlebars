@@ -7,19 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### ⚠ BREAKING CHANGES
 
 - Versions of Vite older than `5.0.0` are no longer tested against or guaranteed to work
-
-- update TypeScript preset to node20
-
-- remove all of the ESLint stuff
-
-- Only distribute ESM build of package
-- this package no longer works as a CommonJS import. If you need to use it from a CommonJS context, you can import it using `import()`
-
-- update pattern of linked CSS file name
-
-- update version of `file-fixture-factory` to work around Rollup issues
-
-- disable `reload` tests in CI
+- Only distribute ESM build of package. This package no longer works as a CommonJS import. If you need to use it from a CommonJS context, you can import it using `import()`
 
 ### Features
 
