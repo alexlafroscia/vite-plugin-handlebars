@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.6.0...v2.0.0) (2024-01-06)
+
+### ⚠ BREAKING CHANGES
+
+- Versions of Vite older than `5.0.0` are no longer tested against or guaranteed to work
+
+- update TypeScript preset to node20
+
+- remove all of the ESLint stuff
+
+- Only distribute ESM build of package
+- this package no longer works as a CommonJS import. If you need to use it from a CommonJS context, you can import it using `import()`
+
+- update pattern of linked CSS file name
+
+- update version of `file-fixture-factory` to work around Rollup issues
+
+- disable `reload` tests in CI
+
+### Features
+
+- Support Vite 5 ([#255](https://github.com/alexlafroscia/vite-plugin-handlebars/issues/255)) ([0e1fffd](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/0e1fffd00c57400be91dccc1fdd895b0e8aca02d))
+
 ## [1.6.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.5.1...v1.6.0) (2021-06-25)
 
 ### Features
