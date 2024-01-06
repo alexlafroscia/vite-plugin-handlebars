@@ -2,6 +2,7 @@
   "name": "vite-plugin-handlebars",
   "version": "1.6.0",
   "description": "Vite plugin for Handlebars support in HTML",
+  "private": false,
   "type": "module",
   "exports": "./dist/index.js",
   "files": [
@@ -15,8 +16,9 @@
     "lint": "prettier --check .",
     "test": "vitest",
     "release": "standard-version",
-    "prepare": "husky install",
-    "prepublishOnly": "yarn build"
+    "postinstall": "husky install",
+    "prepack": "yarn build && pinst --disable",
+    "postpack": "pinst --enable"
   },
   "dependencies": {
     "handlebars": "^4.7.6",
@@ -27,8 +29,9 @@
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.10.6",
     "file-fixture-factory": "^4.0.1",
-    "husky": "^7.0.2",
+    "husky": "^8.0.3",
     "lint-staged": "^11.0.0",
+    "pinst": "^3.0.0",
     "prettier": "^3.1.1",
     "standard-version": "^9.1.0",
     "typescript": "^5.3.3",
