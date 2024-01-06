@@ -2,9 +2,8 @@
   "name": "vite-plugin-handlebars",
   "version": "1.6.0",
   "description": "Vite plugin for Handlebars support in HTML",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.module.js",
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
@@ -12,43 +11,31 @@
   "author": "Alex LaFroscia <alex@lafroscia.com>",
   "license": "MIT",
   "scripts": {
-    "build": "microbundle -f es,cjs --target node --no-compress",
-    "lint": "eslint .",
-    "test": "jest",
+    "build": "tsc",
+    "lint": "prettier --check .",
+    "test": "vitest",
     "release": "standard-version",
     "prepare": "husky install",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "handlebars": "^4.7.6",
-    "vite": "^2.0.0"
+    "vite": "^5.0.0"
   },
   "devDependencies": {
-    "@movable/eslint-config": "^0.6.9",
-    "@movable/eslint-config-typescript": "^1.0.0",
     "@movable/prettier-config": "^0.3.6",
-    "@tsconfig/node14": "^1.0.0",
-    "@types/eslint": "^8",
-    "@types/jest": "^27.0.1",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-no-unsanitized": "^4.0.2",
-    "eslint-plugin-prettier": "^5.1.2",
-    "file-fixture-factory": "^1.0.1",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.10.6",
+    "file-fixture-factory": "^4.0.1",
     "husky": "^7.0.2",
-    "jest": "^26.6.3",
     "lint-staged": "^11.0.0",
-    "microbundle": "^0.15.0",
     "prettier": "^3.1.1",
     "standard-version": "^9.1.0",
-    "ts-jest": "^26.5.0",
-    "typescript": "^4.1.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
-    "*.{json,md,yml}": "prettier --write"
+    "*.{js,ts,json,md,yml}": "prettier --write"
   },
   "standard-version": {
     "scripts": {

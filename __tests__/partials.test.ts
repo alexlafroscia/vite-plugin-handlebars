@@ -1,14 +1,17 @@
+import { test, afterAll, expect } from 'vitest';
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { build, getHtmlSource } from './helpers';
 
-const factory = new FixtureFactory('vite-plugin-handlebars');
+const factory = new FixtureFactory('vite-plugin-handlebars', {
+  root: __dirname,
+});
 
 afterAll(async () => {
   await factory.disposeAll();
 });
 
 test('it allows for injecting an HTML partial', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> header }}',
     partials: {
       'header.html': '<h1>Title</h1>',
@@ -23,7 +26,7 @@ test('it allows for injecting an HTML partial', async () => {
 });
 
 test('it allows for injecting an HBS partial', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> header }}',
     partials: {
       'header.hbs': '<h1>Title</h1>',
@@ -38,7 +41,7 @@ test('it allows for injecting an HBS partial', async () => {
 });
 
 test('it can support multiple partial directories', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> header }}{{> header2 }}',
     partials1: {
       'header.hbs': '<h1>Title</h1>',
@@ -56,7 +59,7 @@ test('it can support multiple partial directories', async () => {
 });
 
 test('it supports sub-directories in the partial directory', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> foo/header }}',
     partials: {
       foo: {
@@ -73,7 +76,7 @@ test('it supports sub-directories in the partial directory', async () => {
 });
 
 test('it handles no partial directory existing', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<h1>Title</h1>',
   });
   const result = await build(temp.dir, {
@@ -86,7 +89,7 @@ test('it handles no partial directory existing', async () => {
 });
 
 test('it handles the partial directory being empty', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<h1>Title</h1>',
     partials: {
       // I think this is empty "enough"?

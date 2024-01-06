@@ -1,7 +1,0 @@
-# Build Output
-coverage
-dist
-tmp
-
-# Dependencies
-node_modules

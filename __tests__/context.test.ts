@@ -1,14 +1,17 @@
+import { test, afterAll, expect } from 'vitest';
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { build, getHtmlSource } from './helpers';
 
-const factory = new FixtureFactory('vite-plugin-handlebars');
+const factory = new FixtureFactory('vite-plugin-handlebars', {
+  root: __dirname,
+});
 
 afterAll(async () => {
   await factory.disposeAll();
 });
 
 test('it processes Handlebars variables', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{foo}}</p>',
   });
   const result = await build(temp.dir, { context: { foo: 'bar' } });
@@ -18,7 +21,7 @@ test('it processes Handlebars variables', async () => {
 });
 
 test('it evaluates functions as `context` keys', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{foo}} {{bar}}</p>',
   });
   const result = await build(temp.dir, {
@@ -33,7 +36,7 @@ test('it evaluates functions as `context` keys', async () => {
 });
 
 test('it evaluates a synchronous `context` function', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{foo}}</p>',
   });
   const result = await build(temp.dir, {
@@ -47,7 +50,7 @@ test('it evaluates a synchronous `context` function', async () => {
 });
 
 test('it evaluates an asynchronous `context` function', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{foo}}</p>',
   });
   const result = await build(temp.dir, {
@@ -62,7 +65,7 @@ test('it evaluates an asynchronous `context` function', async () => {
 });
 
 test('it evaluates an asynchronous `context` function using an id', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '<p>{{foo}}</p>',
   });
   const data: Record<string, Record<string, unknown>> = {

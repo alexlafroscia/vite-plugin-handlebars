@@ -1,14 +1,17 @@
+import { test, afterAll, expect } from 'vitest';
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { build, getHtmlSource } from './helpers';
 
-const factory = new FixtureFactory('vite-plugin-handlebars');
+const factory = new FixtureFactory('vite-plugin-handlebars', {
+  root: __dirname,
+});
 
 afterAll(async () => {
   await factory.disposeAll();
 });
 
 test('it can resolve a path from the root', async () => {
-  const temp = await factory.createStructure({
+  const temp = await factory.createDirectory({
     'index.html': '{{> head}}',
     css: {
       'global.css': '.red { color: red; }',
@@ -23,5 +26,5 @@ test('it can resolve a path from the root', async () => {
   const html = getHtmlSource(result);
 
   // Vite processed the linked file
-  expect(html).toMatch(/href="\/assets\/index\.(.*)\.css"/);
+  expect(html).toMatch(/href="\/assets\/index-(.*)\.css"/);
 });
