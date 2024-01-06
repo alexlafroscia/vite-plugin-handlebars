@@ -5,7 +5,9 @@ import { serve, waitFor, TimeoutError } from './helpers';
 const testWithoutWindows = (...args: Parameters<typeof test>) =>
   process.platform === 'win32' ? test.skip(...args) : test(...args);
 
-const factory = new FixtureFactory('vite-plugin-handlebars');
+const factory = new FixtureFactory('vite-plugin-handlebars', {
+  root: __dirname,
+});
 
 afterAll(async () => {
   await factory.disposeAll();

@@ -2,7 +2,9 @@ import { test, afterAll, expect } from 'vitest';
 import { Factory as FixtureFactory } from 'file-fixture-factory';
 import { build, getHtmlSource } from './helpers';
 
-const factory = new FixtureFactory('vite-plugin-handlebars');
+const factory = new FixtureFactory('vite-plugin-handlebars', {
+  root: __dirname,
+});
 
 afterAll(async () => {
   await factory.disposeAll();

@@ -1435,12 +1435,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-fixture-factory@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "file-fixture-factory@npm:3.1.0"
+"file-fixture-factory@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "file-fixture-factory@npm:4.0.1"
   dependencies:
     debug: "npm:^4.3.1"
-  checksum: c5ac4f6a125ce5e34c2a8e720f4677ed72b8614812062b4a6734680a013e33ac06702ff5b4e938718fc95f2832c970f20b15024978df6a0f17e2fb11c1e475a2
+  checksum: 2a8258fa7a3411a35b2416b5f32489ef61e09989b7c537751fc94a7448139172bcfbffb98028178fcbee0c1158d5edff7b1a0b937b4843f0c5b072370989dab6
   languageName: node
   linkType: hard
 
@@ -4051,7 +4051,7 @@ __metadata:
     "@movable/prettier-config": "npm:^0.3.6"
     "@tsconfig/node20": "npm:^20.1.2"
     "@types/node": "npm:^20.10.6"
-    file-fixture-factory: "npm:^3.1.0"
+    file-fixture-factory: "npm:^4.0.1"
     handlebars: "npm:^4.7.6"
     husky: "npm:^7.0.2"
     lint-staged: "npm:^11.0.0"

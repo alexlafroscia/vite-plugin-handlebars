@@ -26,7 +26,7 @@
     "@movable/prettier-config": "^0.3.6",
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.10.6",
-    "file-fixture-factory": "^3.1.0",
+    "file-fixture-factory": "^4.0.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.0.0",
     "prettier": "^3.1.1",
