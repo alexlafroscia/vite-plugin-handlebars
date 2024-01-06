@@ -63,3 +63,5 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install
       - run: yarn test
+        env:
+          DISABLE_RELOAD_TESTS: true
