@@ -20,7 +20,7 @@
     "postpack": "pinst --enable"
   },
   "dependencies": {
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.9",
     "vite": "^5.0.0"
   },
   "devDependencies": {
