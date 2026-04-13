@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 2.0.1 (2026-04-13)
 
-### Bug Fixes
+### Security Fixes
 
 - bump `handlebars` from `^4.7.6` to `^4.7.9` to resolve a critical security issue
 
