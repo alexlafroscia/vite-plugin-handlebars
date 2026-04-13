@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.1 (2026-04-13)
+
+### Bug Fixes
+
+- bump `handlebars` from `^4.7.6` to `^4.7.9` to resolve a critical security issue
+
 ## [2.0.0](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v1.6.0...v2.0.0) (2024-01-06)
 
 ### ⚠ BREAKING CHANGES
