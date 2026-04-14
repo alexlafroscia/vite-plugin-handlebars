@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v2.0.0...v2.0.2) (2026-04-14)
+
+### Bug Fixes
+
+- **deps:** bump handlebars from ^4.7.6 to ^4.7.9 ([b2096f3](https://github.com/alexlafroscia/vite-plugin-handlebars/commit/b2096f3bf9a2c4d1b4355083cc26da2b28729644))
+
 ### [2.0.1](https://github.com/alexlafroscia/vite-plugin-handlebars/compare/v2.0.0...v2.0.1) (2026-04-14)
 
 ### Bug Fixes
