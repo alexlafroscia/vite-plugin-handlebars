@@ -33,8 +33,8 @@ Configuring the plugin is covered later in this guide.
 
 ### Requirements
 
-- This plugin is intended to work with Vite 2
-- This plugin requires Node 14 or higher (due to usage of `fs/promises`)
+- This plugin is tested against Vite 5 through 8
+- This plugin is tested against Node 24; other versions probably work, but your experience may vary
 
 ## Configuration
 
