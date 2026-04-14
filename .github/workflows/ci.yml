@@ -47,6 +47,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+        vite-version: ['^5.0.0']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -62,6 +63,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install
+      - name: Use Vite version from matrix
+        run: yarn add -D vite@${{ matrix.vite-version }}
       - run: yarn test
         env:
           DISABLE_RELOAD_TESTS: true
