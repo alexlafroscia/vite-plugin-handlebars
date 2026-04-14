@@ -20,8 +20,10 @@
     "postpack": "pinst --enable"
   },
   "dependencies": {
-    "handlebars": "^4.7.9",
-    "vite": "^5.0.0"
+    "handlebars": "^4.7.9"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 ^6.0.0 ^7.0.0 ^8.0.0"
   },
   "devDependencies": {
     "@movable/prettier-config": "^0.3.6",
@@ -34,6 +36,7 @@
     "prettier": "^3.1.1",
     "standard-version": "^9.1.0",
     "typescript": "^5.3.3",
+    "vite": "^5.0.0",
     "vitest": "^1.1.0"
   },
   "lint-staged": {
@@ -45,7 +48,7 @@
     }
   },
   "volta": {
-    "node": "20.10.0",
+    "node": "25.9.0",
     "yarn": "1.22.10"
   },
   "packageManager": "yarn@4.0.2"
