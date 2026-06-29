@@ -8,6 +8,10 @@
     "dist"
   ],
   "repository": "git@github.com:alexlafroscia/vite-plugin-handlebars.git",
+  "bugs": {
+    "url": "https://github.com/alexlafroscia/vite-plugin-handlebars/issues"
+  },
+  "homepage": "https://github.com/alexlafroscia/vite-plugin-handlebars#readme",
   "author": "Alex LaFroscia <alex@lafroscia.com>",
   "license": "MIT",
   "scripts": {
