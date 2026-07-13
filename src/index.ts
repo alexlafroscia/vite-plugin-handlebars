@@ -15,6 +15,7 @@ export interface HandlebarsPluginConfig {
   compileOptions?: CompileOptions;
   runtimeOptions?: RuntimeOptions;
   partialDirectory?: string | Array<string>;
+  useFileNameForPartial?: boolean;
   helpers?: HelperDeclareSpec;
 }
 
@@ -24,6 +25,7 @@ export default function handlebars({
   compileOptions,
   runtimeOptions,
   partialDirectory,
+  useFileNameForPartial,
   helpers,
 }: HandlebarsPluginConfig = {}): VitePlugin {
   // Keep track of what partials are registered
@@ -62,7 +64,7 @@ export default function handlebars({
 
       async handler(html: string, ctx: IndexHtmlTransformContext): Promise<string> {
         if (partialDirectory) {
-          await registerPartials(partialDirectory, partialsSet);
+          await registerPartials(partialDirectory, partialsSet, useFileNameForPartial);
         }
 
         const template = hbs.compile(html, compileOptions);
